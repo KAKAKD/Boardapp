@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticate %}
+<form action='' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+<p>Title<input type='text' name='title' /></p>
+<p>Content<input type='text' name='content' /></p>
+<p>Image<input type='file' name='images' /></p>
+<input type='hidden' name='author' value= '{{ user.username }}' />
+<input type='submit', value='create' />
+</form>
+{% else %}
+ログインしてください
+{% endif %}
+
+{% endblock content %}
